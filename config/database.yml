@@ -1,0 +1,22 @@
+# 教材は開発・テストが MySQL、本番が PostgreSQL。
+# このPCでは開発・テストを SQLite に置き換えている（本番は教材どおり PostgreSQL）
+default: &default
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  adapter: sqlite3
+  database: db/development.sqlite3
+
+test:
+  <<: *default
+  adapter: sqlite3
+  database: db/test.sqlite3
+
+# Render では環境変数 DATABASE_URL（Internal Database URL）を使う
+production:
+  <<: *default
+  adapter: postgresql
+  url: <%= ENV['DATABASE_URL'] %>
