@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  # コメントはログインしている人だけ
+  before_action :authenticate_user!
+
   def create
     @comment = Comment.new(comment_params)
     if @comment.save

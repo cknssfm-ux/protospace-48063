@@ -1,5 +1,9 @@
 class PrototypesController < ApplicationController
+  # ログインしていない人は、一覧と詳細以外ではログインページへ
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_prototype, only: [:show, :edit, :update, :destroy]
+  # 投稿した本人以外は、編集・更新・削除をさせずにトップページへ
+  before_action :move_to_index, only: [:edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.includes(:user).with_attached_image.order(created_at: :desc)
@@ -49,5 +53,9 @@ class PrototypesController < ApplicationController
 
   def set_prototype
     @prototype = Prototype.find(params[:id])
+  end
+
+  def move_to_index
+    redirect_to root_path unless current_user.id == @prototype.user_id
   end
 end
