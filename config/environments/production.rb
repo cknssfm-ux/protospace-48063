@@ -99,4 +99,6 @@ Rails.application.configure do
 
   # Windows で本番用のまとめ作業（assets:precompile）を試すときだけ、キャッシュをメモリに置く（Render＝Linux では何もしない）
   config.assets.configure { |env| env.cache = Sprockets::Cache::MemoryStore.new } if Gem.win_platform?
+  # Windows では書き出しを同時に進めると .gz の名前変更で Permission denied になるので、1つずつ書き出す
+  config.assets.export_concurrent = false if Gem.win_platform?
 end
