@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: [:show, :edit, :update]
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.includes(:user).with_attached_image.order(created_at: :desc)
@@ -32,6 +32,11 @@ class PrototypesController < ApplicationController
     else
       render :edit, status: 422
     end
+  end
+
+  def destroy
+    @prototype.destroy
+    redirect_to root_path
   end
 
   private
