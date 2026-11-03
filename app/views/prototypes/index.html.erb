@@ -1,20 +1,13 @@
 <main class="main">
   <div class="inner">
-    <%# ログインしているときだけ「こんにちは、〇〇さん」 %>
-    <div class="greeting">
-      こんにちは、
-      <%= link_to "ユーザー名さん", "#", class: :greeting__link %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="greeting">
+        こんにちは、
+        <%= link_to "#{current_user.name}さん", "#", class: :greeting__link %>
+      </div>
+    <% end %>
     <div class="card__wrapper">
       <%# 投稿されたプロトタイプを一覧で出す（仮置き） %>
-      <div class="card">
-        <%= link_to image_tag("logo.png", class: :card__img), "#" %>
-        <div class="card__body">
-          <%= link_to "プロトタイプ名", "#", class: :card__title %>
-          <p class="card__summary">キャッチコピー</p>
-          <%= link_to "by ユーザー名", "#", class: :card__user %>
-        </div>
-      </div>
     </div>
   </div>
 </main>

@@ -22,6 +22,9 @@ module Protospace48063
     # in config/environments, which are processed later.
     #
     config.time_zone = "Tokyo"
+    # 画面の文字とエラーは日本語。訳のないもの（devise の一部など）は英語で出す
+    config.i18n.default_locale = :ja
+    config.i18n.fallbacks = [:en]
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end

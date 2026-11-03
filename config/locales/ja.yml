@@ -1,0 +1,52 @@
+# 入力エラーとお知らせを日本語で出すための最小限の訳（rails-i18n の代わり）
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      prototype: プロトタイプ
+      comment: コメント
+    attributes:
+      user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        name: ユーザー名
+        profile: プロフィール
+        occupation: 所属
+        position: 役職
+      prototype:
+        title: プロトタイプの名称
+        catch_copy: キャッチコピー
+        concept: コンセプト
+        image: プロトタイプの画像
+        user: 投稿者
+      comment:
+        content: コメント
+        user: 投稿者
+        prototype: プロトタイプ
+  errors:
+    format: "%{attribute}%{message}"
+    messages:
+      blank: を入力してください
+      taken: はすでに使われています
+      invalid: は正しくありません
+      too_short: は%{count}文字以上で入力してください
+      too_long: は%{count}文字以内で入力してください
+      confirmation: と%{attribute}の入力が一致しません
+      required: を入力してください
+      not_saved:
+        one: "エラーがあるため保存できませんでした"
+        other: "%{count}件のエラーがあるため保存できませんでした"
+  devise:
+    failure:
+      already_authenticated: すでにログインしています。
+      invalid: メールアドレスまたはパスワードが違います。
+      not_found_in_database: メールアドレスまたはパスワードが違います。
+      unauthenticated: ログインもしくはアカウント登録してください。
+      timeout: セッションが切れました。もう一度ログインしてください。
+    sessions:
+      signed_in: ログインしました。
+      signed_out: ログアウトしました。
+      already_signed_out: ログアウトしました。
+    registrations:
+      signed_up: アカウント登録が完了しました。

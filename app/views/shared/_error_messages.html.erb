@@ -1,0 +1,11 @@
+<%# 入力エラーがあるときだけ、まとめて表示する（model: エラーを持つモデル） %>
+<% if model.errors.any? %>
+  <div class="error-messages">
+    入力内容を確認してください（<%= model.errors.count %>件）
+    <ul>
+      <% model.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -15,16 +15,24 @@
       <div class="inner">
         <div class="nav">
           <div class="nav__left">
-            <%= link_to image_tag("logo.png", class: :logo, alt: "ProtoSpace"), "#" %>
+            <%= link_to image_tag("logo.png", class: :logo, alt: "ProtoSpace"), root_path %>
           </div>
           <div class="nav__right">
-            <%# ログインしているとき：ログアウト・New Proto ／ していないとき：ログイン・新規登録 %>
-            <%= link_to "ログイン", "#", class: :nav__btn %>
-            <%= link_to "新規登録", "#", class: :nav__btn %>
+            <% if user_signed_in? %>
+              <%# ログアウトは DELETE で送る（JavaScript が動かないテストでも押せるように button_to にしている） %>
+              <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
+              <%= link_to "New Proto", "#", class: "nav__btn nav__btn--new" %>
+            <% else %>
+              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
+              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+            <% end %>
           </div>
         </div>
       </div>
     </header>
+
+    <% if notice %><p class="notice"><%= notice %></p><% end %>
+    <% if alert %><p class="alert"><%= alert %></p><% end %>
 
     <%= yield %>
 
