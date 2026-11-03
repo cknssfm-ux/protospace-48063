@@ -21,7 +21,7 @@
             <% if user_signed_in? %>
               <%# ログアウトは DELETE で送る（JavaScript が動かないテストでも押せるように button_to にしている） %>
               <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
-              <%= link_to "New Proto", "#", class: "nav__btn nav__btn--new" %>
+              <%= link_to "New Proto", new_prototype_path, class: "nav__btn nav__btn--new" %>
             <% else %>
               <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
               <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>

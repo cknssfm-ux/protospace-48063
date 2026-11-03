@@ -1,0 +1,9 @@
+<%# 一覧の1件分（トップページ・ユーザー詳細ページで使う） %>
+<div class="card">
+  <%= link_to image_tag(prototype.image, class: :card__img, alt: prototype.title), "#" %>
+  <div class="card__body">
+    <%= link_to prototype.title, "#", class: :card__title %>
+    <p class="card__summary"><%= prototype.catch_copy %></p>
+    <%= link_to "by #{prototype.user.name}", "#", class: :card__user %>
+  </div>
+</div>
