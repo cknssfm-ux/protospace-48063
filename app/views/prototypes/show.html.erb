@@ -1,0 +1,30 @@
+<main class="main">
+  <div class="inner">
+    <div class="prototype__wrapper">
+      <p class="prototype__hedding">
+        <%= @prototype.title %>
+      </p>
+      <%= link_to "by #{@prototype.user.name}", "#", class: :prototype__user %>
+      <%# プロトタイプの投稿者とログインしているユーザーが同じときだけ「編集」「削除」を出す %>
+      <% if user_signed_in? && current_user.id == @prototype.user_id %>
+        <div class="prototype__manage">
+          <%= link_to "編集する", "#", class: :prototype__btn %>
+          <%= link_to "削除する", "#", class: :prototype__btn %>
+        </div>
+      <% end %>
+      <div class="prototype__image">
+        <%= image_tag @prototype.image, alt: @prototype.title %>
+      </div>
+      <div class="prototype__body">
+        <div class="prototype__detail">
+          <p class="detail__title">キャッチコピー</p>
+          <p class="detail__message"><%= @prototype.catch_copy %></p>
+        </div>
+        <div class="prototype__detail">
+          <p class="detail__title">コンセプト</p>
+          <p class="detail__message"><%= @prototype.concept %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
