@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :prototypes
+  has_many :prototypes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   # メールアドレス・パスワードの必須と形式は devise（:validatable）がチェックする
   validates :name, presence: true
